@@ -1,53 +1,32 @@
 import { useProductStore } from "../../store/productStore";
 import { useEffect, useRef, useState } from "react";
+import { DashedLine } from './DashedLine';
 
 export const HotSpotCard = () => {
   const product = useProductStore((state) => state.product);
   const currentHotspotIndex = useProductStore((state) => state.currentHotspotIndex);
   const cardRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [linePoints, setLinePoints] = useState({
+    startPoint: { x: 0, y: 0 },
+    endPoint: { x: 0, y: 0 }
+  });
 
   const isLeftSide = currentHotspotIndex % 2 === 0;
 
   useEffect(() => {
-    // Fade out
-    setIsVisible(false);
-    
-    // Fade in after position update
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 1000); // Match the transition duration
-
-    return () => clearTimeout(timer);
-  }, [currentHotspotIndex]);
-
-  useEffect(() => {
     const updateLine = () => {
-      if (cardRef.current && lineRef.current) {
+      if (cardRef.current) {
         const cardRect = cardRef.current.getBoundingClientRect();
         const lineStartX = isLeftSide ? cardRect.right : cardRect.left;
         const cardCenterY = cardRect.top + cardRect.height / 2;
         const screenCenterX = window.innerWidth / 2;
         const screenCenterY = window.innerHeight / 2;
 
-        const deltaX = screenCenterX - lineStartX;
-        const deltaY = screenCenterY - cardCenterY;
-        const length = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-
-        lineRef.current.style.width = `${length}px`;
-        lineRef.current.style.transform = `rotate(${angle}deg)`;
-        lineRef.current.style.left = `${lineStartX}px`;
-        lineRef.current.style.top = `${cardCenterY}px`;
-        
-        if (isLeftSide) {
-          lineRef.current.style.background = 'linear-gradient(to right, #4a9eff, transparent)';
-          lineRef.current.style.transformOrigin = 'left center';
-        } else {
-          lineRef.current.style.background = 'linear-gradient(to right, transparent, #4a9eff)';
-          lineRef.current.style.transformOrigin = 'left center';
-        }
+        setLinePoints({
+          startPoint: { x: screenCenterX, y: screenCenterY },
+          endPoint: { x: lineStartX, y: cardCenterY }
+        });
       }
     };
 
@@ -62,6 +41,7 @@ export const HotSpotCard = () => {
 
   return (
     <>
+      <DashedLine {...linePoints} />
       <div
         ref={cardRef}
         style={{
@@ -71,39 +51,50 @@ export const HotSpotCard = () => {
             : { right: '10%' }),
           top: '50%',
           transform: 'translateY(-50%)',
-          background: 'rgba(0, 0, 0, 0.8)',
-          padding: '20px',
-          borderRadius: '10px',
+          background: '#0046c0',
+          borderRadius: '0px',
           color: 'white',
-          width: '300px',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          width: '310px',
+          height: '350px',
+          display: 'flex',
+          flexDirection: 'column',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
           zIndex: 1000,
           opacity: isVisible ? 1 : 0,
-          transition: 'all 0.3s ease-in-out',
+          overflow: 'hidden',
         }}
       >
-        <h3 style={{ margin: '0 0 10px 0', color: '#4a9eff' }}>
-          {currentHotspot.name}
-        </h3>
-        <p style={{ margin: '0', fontSize: '14px', lineHeight: '1.5' }}>
-          {currentHotspot.description}
-        </p>
-        <div style={{ marginTop: '15px', fontSize: '12px', color: '#888' }}>
-          <div>Position: {currentHotspot.cameraPosition.map(n => n.toFixed(2)).join(', ')}</div>
-          <div>Target: {currentHotspot.cameraTarget.map(n => n.toFixed(2)).join(', ')}</div>
+        <div style={{ 
+          padding: '30px',
+          flexGrow : "1",
+          background: '#0046c0',
+        }}>
+          <p style={{ 
+            margin: '0', 
+            fontSize: '16px', 
+            lineHeight: '1.5',
+            color: 'white',
+            fontWeight: '600',
+          }}>
+            {currentHotspot.description}
+          </p>
+        </div>
+        <div style={{
+          width: '100%',
+          height: '175px',
+          overflow: 'hidden',
+        }}>
+          <img 
+            src="https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&auto=format&fit=crop"
+            alt={currentHotspot.name}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
         </div>
       </div>
-      <div
-        ref={lineRef}
-        style={{
-          position: 'absolute',
-          height: '2px',
-          pointerEvents: 'none',
-          zIndex: 999,
-          opacity: isVisible ? 1 : 0,
-          transition: 'opacity 0.3s ease-in-out',
-        }}
-      />
     </>
   );
 }; 

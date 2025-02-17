@@ -1,42 +1,28 @@
-import { useThree } from '@react-three/fiber';
-import { useEffect } from 'react';
-import { useModel } from '../../hooks/useModel';
+import { useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { useEffect } from "react";
+import * as THREE from "three";
 
-interface ModelProps {
-  url?: string;
-  onLoad?: () => void;
-  onError?: (error: string) => void;
-}
-
-export const Model = ({ url, onLoad, onError }: ModelProps) => {
-  const { model, error } = useModel(url);
-  const { scene } = useThree();
+export const Model = ({ url, onLoad, onError }: any) => {
+  const gltf = useLoader(GLTFLoader, url, undefined, (error) => {
+    console.error("Error loading model:", error);
+    onError?.(error.message);
+  });
 
   useEffect(() => {
-    if (model) {
-      // Center the model
-      model.scene.position.set(0, 0, 0);
-      model.scene.scale.set(1, 1, 1);
-      
-      // Clear existing model if any
-      scene.children = scene.children.filter(child => 
-        child.type === 'DirectionalLight' || child.type === 'AmbientLight'
-      );
-      
-      // Add the new model
-      scene.add(model.scene);
-      
-      // Call onLoad callback
+    if (gltf) {
+      gltf.scene.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          // Enable environment map reflections on all materials
+          if (child.material) {
+            child.material.envMapIntensity = 1;
+            child.material.needsUpdate = true;
+          }
+        }
+      });
       onLoad?.();
     }
-  }, [model, scene, onLoad]);
+  }, [gltf, onLoad]);
 
-  useEffect(() => {
-    if (error) {
-      console.error('Error loading model:', error);
-      onError?.(error);
-    }
-  }, [error, onError]);
-
-  return null;
+  return <primitive object={gltf.scene} />;
 }; 

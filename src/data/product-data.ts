@@ -12,7 +12,7 @@ export const mockProduct: Product = {
       name: "Front View",
       description: "View of the aircraft's front section",
       cameraPosition: [2.92, 4.53, 31.64],
-      cameraTarget: [-16.84, -8.26, 1.85],
+      cameraTarget: [-16.84, -7.26, 1.85],
     },
     {
       id: "2",

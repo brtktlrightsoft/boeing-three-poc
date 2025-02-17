@@ -9,6 +9,9 @@ import { CameraPositionUpdater } from "../three/CameraPositionUpdater";
 import { HotSpotNavigation } from "../ui/HotSpotNavigation";
 import { HotSpotCard } from "../ui/HotSpotCard";
 import { ControlsToggle } from "../ui/ControlsToggle";
+import { Environment } from "../three/Environment";
+import { HotSpotIndicator } from "../ui/HotSpotIndicator";
+import * as THREE from "three";
 
 export const ModelViewer = ({
   modelUrl,
@@ -36,21 +39,28 @@ export const ModelViewer = ({
           fov: 45,
         }}
         style={{ width: "100%", height: "100%" }}
+        gl={{ 
+          preserveDrawingBuffer: true,
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1,
+        }}
       >
-        <ambientLight intensity={1.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[10, 10, 5]} intensity={0.5} />
         <Suspense fallback={null}>
           <Model
             url={modelUrl}
             onLoad={handleModelLoad}
             onError={handleError}
           />
+          <Environment />
         </Suspense>
         <Controls autoRotate={false} />
         <CameraPositionUpdater />
       </Canvas>
       <CameraPositionDisplay />
       <ControlsToggle />
+      <HotSpotIndicator />
       {!isLoading && <HotSpotNavigation />}
       {!isLoading && <HotSpotCard />}
       <LoadingScreen isLoading={isLoading} error={error} />

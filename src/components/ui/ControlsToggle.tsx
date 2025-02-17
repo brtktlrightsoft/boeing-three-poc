@@ -8,7 +8,7 @@ export const ControlsToggle = () => {
       style={{
         position: 'absolute',
         top: '250px',
-        right: '20px',
+        left: '20px',
         background: 'rgba(0, 0, 0, 0.7)',
         padding: '10px',
         borderRadius: '5px',

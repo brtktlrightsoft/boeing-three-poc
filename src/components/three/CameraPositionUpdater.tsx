@@ -35,7 +35,7 @@ export const CameraPositionUpdater = () => {
         return;
       }
       // Lerp from the current camera position towards the target
-      camera.position.lerp(targetPosition.current, 0.02);
+      camera.position.lerp(targetPosition.current, 0.08);
       camera.updateProjectionMatrix();
     }
   });
