@@ -25,7 +25,7 @@ export function HotSpotNavigation() {
   const previousHotspot = () => {
     setCurrentHotspotIndex(
       (currentHotspotIndex - 1 + (product?.hotspots.length ?? 1)) %
-        (product?.hotspots.length ?? 1)
+      (product?.hotspots.length ?? 1)
     );
   };
   // onClick handlers for the buttons (functionality to be added)
@@ -48,6 +48,7 @@ export function HotSpotNavigation() {
 
   // Styling for circular buttons
   const buttonStyle: React.CSSProperties = {
+    position: "relative",
     width: "60px",
     height: "60px",
     borderRadius: "100%",
@@ -71,13 +72,25 @@ export function HotSpotNavigation() {
     alignItems: "center",
     gap: "200px",
   };
+  const arrowStyle: React.CSSProperties = {
+    position: "absolute",
+    top: "50%",
+    transform: "translate(-50%,-55%)",
+    left: "50%",
+  };
+
   return (
     <div style={wrapperStyle}>
       <div style={buttonStyle} onClick={handleLeftClick}>
-        {"<"}
+        <span style={arrowStyle}>
+          {"<"}
+        </span>
       </div>
       <div style={buttonStyle} onClick={handleRightClick}>
-        {">"}
+        <span style={arrowStyle}>
+          {">"}
+        </span>
+
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { CameraPositionDisplay } from "../ui/CameraPositionDisplay";
 import { CameraPositionUpdater } from "../three/CameraPositionUpdater";
 import { HotSpotNavigation } from "../ui/HotSpotNavigation";
 import { HotSpotCard } from "../ui/HotSpotCard";
+import { ControlsToggle } from "../ui/ControlsToggle";
 
 export const ModelViewer = ({
   modelUrl,
@@ -49,6 +50,7 @@ export const ModelViewer = ({
         <CameraPositionUpdater />
       </Canvas>
       <CameraPositionDisplay />
+      <ControlsToggle />
       {!isLoading && <HotSpotNavigation />}
       {!isLoading && <HotSpotCard />}
       <LoadingScreen isLoading={isLoading} error={error} />
