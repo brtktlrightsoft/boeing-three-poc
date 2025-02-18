@@ -11,7 +11,9 @@ import { HotSpotCard } from "../ui/HotSpotCard";
 import { ControlsToggle } from "../ui/ControlsToggle";
 import { Environment } from "../three/Environment";
 import { HotSpotIndicator } from "../ui/HotSpotIndicator";
+import { useControlsStore } from "../../store/controlsStore";
 import * as THREE from "three";
+import { HomeNavigation } from "../ui/HomeNavigation";
 
 export const ModelViewer = ({
   modelUrl,
@@ -19,6 +21,7 @@ export const ModelViewer = ({
 }: ModelViewerProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>();
+  const enableControls = useControlsStore((state) => state.enableControls);
 
   const handleModelLoad = () => {
     setIsLoading(false);
@@ -35,7 +38,7 @@ export const ModelViewer = ({
     >
       <Canvas
         camera={{
-          position: [9.56, -12, 49],
+          position: [2.92, 4.53, 31.64],
           fov: 45,
         }}
         style={{ width: "100%", height: "100%" }}
@@ -58,11 +61,12 @@ export const ModelViewer = ({
         <Controls autoRotate={false} />
         <CameraPositionUpdater />
       </Canvas>
+      <HomeNavigation />
       <CameraPositionDisplay />
       <ControlsToggle />
       <HotSpotIndicator />
-      {!isLoading && <HotSpotNavigation />}
-      {!isLoading && <HotSpotCard />}
+      {!isLoading && !enableControls && <HotSpotNavigation />}
+      {!isLoading && !enableControls && <HotSpotCard />}
       <LoadingScreen isLoading={isLoading} error={error} />
     </div>
   );

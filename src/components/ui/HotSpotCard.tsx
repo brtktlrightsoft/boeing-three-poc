@@ -44,54 +44,22 @@ export const HotSpotCard = () => {
       <DashedLine {...linePoints} />
       <div
         ref={cardRef}
-        style={{
-          position: 'absolute',
-          ...(isLeftSide
-            ? { left: '10%' }
-            : { right: '10%' }),
-          top: '50%',
-          transform: 'translateY(-50%)',
-          background: '#0046c0',
-          borderRadius: '0px',
-          color: 'white',
-          width: '310px',
-          height: '350px',
-          display: 'flex',
-          flexDirection: 'column',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
-          zIndex: 1000,
-          opacity: isVisible ? 1 : 0,
-          overflow: 'hidden',
-        }}
+        className={`absolute top-1/2 -translate-y-1/2 ${
+          isLeftSide ? 'left-[5%]' : 'right-[5%]'
+        } bg-[#0046c0] w-[310px] h-[350px] flex flex-col shadow-lg z-[1000] ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        } overflow-hidden`}
       >
-        <div style={{ 
-          padding: '30px',
-          flexGrow : "1",
-          background: '#0046c0',
-        }}>
-          <p style={{ 
-            margin: '0', 
-            fontSize: '16px', 
-            lineHeight: '1.5',
-            color: 'white',
-            fontWeight: '600',
-          }}>
+        <div className="p-8 flex-grow bg-[#0046c0]">
+          <p className="m-0 text-base leading-relaxed text-white font-semibold">
             {currentHotspot.description}
           </p>
         </div>
-        <div style={{
-          width: '100%',
-          height: '175px',
-          overflow: 'hidden',
-        }}>
+        <div className="w-full h-[175px] overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&auto=format&fit=crop"
             alt={currentHotspot.name}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
+            className="w-full h-full object-cover"
           />
         </div>
       </div>

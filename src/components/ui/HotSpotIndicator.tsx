@@ -7,44 +7,18 @@ export const HotSpotIndicator = () => {
   if (!product) return null;
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        top: '40px',
-        right: '5%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '15px',
-        zIndex: 1000,
-      }}
-    >
-      <div style={{
-        display: 'flex',
-        gap: '8px',
-        alignItems: 'end',
-      }}>
+    <div className="absolute top-10 right-[5%] flex flex-col items-end gap-4 z-[1000]">
+      <div className="flex gap-2 items-end">
         {product.hotspots.map((_, index) => (
           <div
             key={index}
-            style={{
-              width: '60px',
-              height: '3px',
-              backgroundColor: 'white',
-              opacity: index === currentHotspotIndex ? 1 : 0.3,
-              transition: 'opacity 0.3s ease',
-            }}
+            className={`w-[60px] h-[3px] bg-white transition-opacity duration-300 ${
+              index === currentHotspotIndex ? 'opacity-100' : 'opacity-30'
+            }`}
           />
         ))}
       </div>
-      <div style={{
-        color: 'white',
-        fontSize: '24px',
-        fontWeight: '500',
-        marginRight: '16px',
-        textAlign: 'end',
-        minHeight: '24px',
-      }}>
+      <div className="text-white text-2xl font-medium mr-4 text-right min-h-[24px]">
         {product.hotspots[currentHotspotIndex]?.name}
       </div>
     </div>

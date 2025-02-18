@@ -1,15 +1,12 @@
 import { useEffect } from "react";
 import { useCameraStore } from "../../store/cameraStore";
 import { useProductStore } from "../../store/productStore";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export function HotSpotNavigation() {
+export const HotSpotNavigation = () => {
   const product = useProductStore((state) => state.product);
-  const currentHotspotIndex = useProductStore(
-    (state) => state.currentHotspotIndex
-  );
-  const setCurrentHotspotIndex = useProductStore(
-    (state) => state.setCurrentHotspotIndex
-  );
+  const currentHotspotIndex = useProductStore((state) => state.currentHotspotIndex);
+  const setCurrentHotspotIndex = useProductStore((state) => state.setCurrentHotspotIndex);
   const updateCameraPosition = useCameraStore(
     (state) => state.updateCameraPosition
   );
@@ -17,24 +14,22 @@ export function HotSpotNavigation() {
     (state) => state.updateCameraTarget
   );
 
-  const nextHotspot = () => {
+  if (!product) return null;
+
+  const handlePrevious = () => {
     setCurrentHotspotIndex(
-      (currentHotspotIndex + 1) % (product?.hotspots.length ?? 1)
+      currentHotspotIndex === 0
+        ? product.hotspots.length - 1
+        : currentHotspotIndex - 1
     );
-  };
-  const previousHotspot = () => {
-    setCurrentHotspotIndex(
-      (currentHotspotIndex - 1 + (product?.hotspots.length ?? 1)) %
-      (product?.hotspots.length ?? 1)
-    );
-  };
-  // onClick handlers for the buttons (functionality to be added)
-  const handleLeftClick = () => {
-    previousHotspot();
   };
 
-  const handleRightClick = () => {
-    nextHotspot();
+  const handleNext = () => {
+    setCurrentHotspotIndex(
+      currentHotspotIndex === product.hotspots.length - 1
+        ? 0
+        : currentHotspotIndex + 1
+    );
   };
 
   useEffect(() => {
@@ -46,52 +41,20 @@ export function HotSpotNavigation() {
     }
   }, [currentHotspotIndex, product, updateCameraPosition, updateCameraTarget]);
 
-  // Styling for circular buttons
-  const buttonStyle: React.CSSProperties = {
-    position: "relative",
-    width: "60px",
-    height: "60px",
-    borderRadius: "100%",
-    border: "1px solid white",
-    background: "transparent",
-    color: "white",
-    cursor: "pointer",
-    fontSize: "45px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "0 10px",
-  };
-  const wrapperStyle: React.CSSProperties = {
-    position: "absolute",
-    bottom: "100px",
-    left: "50%",
-    transform: "translateX(-50%)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "200px",
-  };
-  const arrowStyle: React.CSSProperties = {
-    position: "absolute",
-    top: "50%",
-    transform: "translate(-50%,-55%)",
-    left: "50%",
-  };
-
   return (
-    <div style={wrapperStyle}>
-      <div style={buttonStyle} onClick={handleLeftClick}>
-        <span style={arrowStyle}>
-          {"<"}
-        </span>
-      </div>
-      <div style={buttonStyle} onClick={handleRightClick}>
-        <span style={arrowStyle}>
-          {">"}
-        </span>
-
-      </div>
+    <div className="absolute bottom-[120px] left-1/2 -translate-x-1/2 flex justify-center items-center gap-[400px]">
+      <i
+        onClick={handlePrevious}
+        className="relative w-[80px] h-[80px] rounded-full border border-[3px] border-white bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
+      >
+        <ChevronLeft className="w-18 h-18" />
+      </i>
+      <i
+        onClick={handleNext}
+        className="relative w-[80px] h-[80px] rounded-full border border-[3px] border-white bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
+      >
+        <ChevronRight className="w-18 h-18" />
+      </i>
     </div>
   );
-}
+};

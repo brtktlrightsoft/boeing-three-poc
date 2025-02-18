@@ -3,11 +3,12 @@ import { useEffect, useRef } from 'react';
 import { useCameraInformationStore } from '../../store/cameraInformationStore';
 import { useCameraStore } from '../../store/cameraStore';
 import * as THREE from 'three';
+import { useControlsStore } from '../../store/controlsStore';
 
 export const CameraPositionUpdater = () => {
   const { camera } = useThree();
+  const enableControls = useControlsStore((state) => state.enableControls);
   const updatePosition = useCameraInformationStore((state) => state.updatePosition);
-  const updateLookAt = useCameraInformationStore((state) => state.updateLookAt);
   const position = useCameraStore((state) => state.position);
   const target = useCameraStore((state) => state.target);
   const isAnimating = useRef(false);
@@ -19,13 +20,14 @@ export const CameraPositionUpdater = () => {
 
     const interval = setInterval(updateCameraPosition, 100);
     return () => clearInterval(interval);
-  }, [camera, updatePosition, updateLookAt]);
+  }, [camera, updatePosition]);
 
   useEffect(() => {
+    if(enableControls) return;
     // When position changes from store, start animation
     targetPosition.current.set(position[0], position[1], position[2]);
     isAnimating.current = true;
-  }, [position,target,camera]);
+  }, [position,target,camera,enableControls]);
 
   useFrame(() => {
     if (isAnimating.current) {

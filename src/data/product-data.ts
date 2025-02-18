@@ -3,14 +3,14 @@ import modelUrl from '../assets/models/KC_46.glb?url';
 
 export const mockProduct: Product = {
   id: "1",
-  name: "Product 1",
+  name: "KC-46",
   description: "Product 1 description",
   modelUrl: modelUrl,
   hotspots: [
     {
       id: "1",
-      name: "Front View",
-      description: "View of the aircraft's front section",
+      name: "Wing Air Refueling Pods",
+      description: "400 GPM Offload Rate with improved house response and improved fault detection and isolation.",
       cameraPosition: [2.92, 4.53, 31.64],
       cameraTarget: [-16.84, -7.26, 1.85],
     },

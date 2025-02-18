@@ -11,7 +11,7 @@ export const Model = ({ url, onLoad, onError }: any) => {
 
   useEffect(() => {
     if (gltf) {
-      gltf.scene.traverse((child) => {
+      gltf.scene.traverse((child: any) => {
         if (child instanceof THREE.Mesh) {
           // Enable environment map reflections on all materials
           if (child.material) {
