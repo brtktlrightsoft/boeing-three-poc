@@ -1,0 +1,14 @@
+{
+  "pin": {
+    "title": "ENTER PIN TO START ACTIVATION",
+    "submit": "Submit",
+    "error": {
+      "invalid": "Invalid PIN",
+      "notFound": "No devices found for this PIN",
+      "generic": "An error occurred while validating PIN"
+    }
+  },
+  "selectLanguage": {
+    "title": "Select Language"
+  }
+}

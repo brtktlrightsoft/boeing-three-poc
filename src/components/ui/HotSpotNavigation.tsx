@@ -45,13 +45,13 @@ export const HotSpotNavigation = () => {
     <div className="absolute bottom-[120px] left-1/2 -translate-x-1/2 flex justify-center items-center gap-[400px]">
       <i
         onClick={handlePrevious}
-        className="relative w-[80px] h-[80px] rounded-full border border-[3px] border-white bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
+        className="relative w-[80px] h-[80px] rounded-full border-[3px] border-white bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
       >
         <ChevronLeft className="w-18 h-18" />
       </i>
       <i
         onClick={handleNext}
-        className="relative w-[80px] h-[80px] rounded-full border border-[3px] border-white bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
+        className="relative w-[80px] h-[80px] rounded-full border-[3px] border-white bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
       >
         <ChevronRight className="w-18 h-18" />
       </i>

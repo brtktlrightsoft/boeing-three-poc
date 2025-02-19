@@ -1,0 +1,14 @@
+{
+  "pin": {
+    "title": "起動するPINを入力してください",
+    "submit": "送信",
+    "error": {
+      "invalid": "無効なPIN",
+      "notFound": "このPINのデバイスが見つかりません",
+      "generic": "PINの検証中にエラーが発生しました"
+    }
+  },
+  "selectLanguage": {
+    "title": "言語を選択してください"
+  }
+}

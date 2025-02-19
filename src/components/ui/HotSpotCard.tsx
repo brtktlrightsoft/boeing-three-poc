@@ -1,10 +1,12 @@
 import { useProductStore } from "../../store/productStore";
 import { useEffect, useRef, useState } from "react";
 import { DashedLine } from './DashedLine';
+import { useTranslation } from 'react-i18next';
 
 export const HotSpotCard = () => {
   const product = useProductStore((state) => state.product);
   const currentHotspotIndex = useProductStore((state) => state.currentHotspotIndex);
+  const { i18n } = useTranslation();
   const cardRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
   const [linePoints, setLinePoints] = useState({
@@ -38,6 +40,7 @@ export const HotSpotCard = () => {
   if (!product) return null;
 
   const currentHotspot = product.hotspots[currentHotspotIndex];
+  const currentLanguage = i18n.language;
 
   return (
     <>
@@ -52,13 +55,13 @@ export const HotSpotCard = () => {
       >
         <div className="p-8 flex-grow bg-[#0046c0]">
           <p className="m-0 text-base leading-relaxed text-white font-semibold">
-            {currentHotspot.description}
+            {currentHotspot.description[currentLanguage]}
           </p>
         </div>
         <div className="w-full h-[175px] overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&auto=format&fit=crop"
-            alt={currentHotspot.name}
+            alt={currentHotspot.name[currentLanguage]}
             className="w-full h-full object-cover"
           />
         </div>

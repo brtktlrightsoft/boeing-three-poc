@@ -1,9 +1,11 @@
+import { useTranslation } from "react-i18next";
 import { useProductStore } from "../../store/productStore";
 
 export const HotSpotIndicator = () => {
   const product = useProductStore((state) => state.product);
   const currentHotspotIndex = useProductStore((state) => state.currentHotspotIndex);
-
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
   if (!product) return null;
 
   return (
@@ -19,7 +21,7 @@ export const HotSpotIndicator = () => {
         ))}
       </div>
       <div className="text-white text-2xl font-medium mr-4 text-right min-h-[24px]">
-        {product.hotspots[currentHotspotIndex]?.name}
+        {product.hotspots[currentHotspotIndex]?.name[currentLanguage]}
       </div>
     </div>
   );
