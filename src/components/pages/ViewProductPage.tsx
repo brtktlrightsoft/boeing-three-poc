@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useProductStore } from "../../store/productStore";
 import { ModelViewer } from "../viewer/ModelViewer";
+import { BoeingLogo } from "../ui/BoeingLogo";
 
 function ViewProductPage() {
   const product = useProductStore((state) => state.product);
@@ -30,6 +31,7 @@ function ViewProductPage() {
         justifyContent: "center",
       }}
     >
+      <BoeingLogo />
       <ModelViewer
         modelUrl={modelUrl}
         autoRotate={true}

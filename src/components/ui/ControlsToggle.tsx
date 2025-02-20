@@ -4,7 +4,7 @@ export const ControlsToggle = () => {
   const { enableControls, toggleControls } = useControlsStore();
 
   return (
-    <div className="absolute top-[250px] left-5 bg-black/70 p-2.5 rounded text-white font-mono text-sm z-[1000]">
+    <div className="absolute bottom-2 left-5 bg-black/70 p-2.5 rounded text-white font-mono text-sm z-[1000]">
       <label className="flex items-center gap-2">
         <input
           type="checkbox"
