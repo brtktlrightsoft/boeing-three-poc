@@ -20,7 +20,7 @@ export const ModelViewer = ({
   backgroundColor = "#1a1a1a",
 }: ModelViewerProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string>();
+  const [_, setError] = useState<string>();
   const enableControls = useControlsStore((state) => state.enableControls);
 
   const handleModelLoad = () => {

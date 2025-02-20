@@ -6,10 +6,7 @@ import { ActivationData, ActivationDataDto } from '../../types/activation-data';
 import { activationStorage } from '../../config/storage';
 import logo from "../../assets/images/boeing_black.png";
 
-interface DownloadProgress {
-  asset: string;
-  progress: number;
-}
+
 
 export const AssetDownloaderPage = () => {
   const location = useLocation();

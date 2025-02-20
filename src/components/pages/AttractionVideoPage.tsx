@@ -3,14 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@heroui/button';
 import { activationStorage } from '../../config/storage';
 import { ActivationData } from '../../types/activation-data';
-import { useTranslation } from 'react-i18next';
 import { useProductStore } from '../../store/productStore';
 
 export const AttractionVideoPage = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const navigate = useNavigate();
   const [videoUrl, setVideoUrl] = useState<string>('');
-  const { t } = useTranslation();
   const setProduct = useProductStore((state) => state.setProduct);
 
   useEffect(() => {

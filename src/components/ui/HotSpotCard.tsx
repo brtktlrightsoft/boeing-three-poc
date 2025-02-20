@@ -8,7 +8,7 @@ export const HotSpotCard = () => {
   const currentHotspotIndex = useProductStore((state) => state.currentHotspotIndex);
   const { i18n } = useTranslation();
   const cardRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, _] = useState(true);
   const [linePoints, setLinePoints] = useState({
     startPoint: { x: 0, y: 0 },
     endPoint: { x: 0, y: 0 }
