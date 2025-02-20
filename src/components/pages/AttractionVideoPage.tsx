@@ -17,7 +17,7 @@ export const AttractionVideoPage = () => {
     const loadVideo = async () => {
       const pin = localStorage.getItem('pin');
       if (!pin) {
-        navigate('/', { replace: true });
+        navigate('/pin-entry', { replace: true });
         return;
       }
 

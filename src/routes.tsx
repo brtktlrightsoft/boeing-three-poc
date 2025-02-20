@@ -9,6 +9,10 @@ import { AttractionVideoPage } from "./components/pages/AttractionVideoPage";
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <AttractionVideoPage />,
+  },
+  {
+    path: "/pin-entry",
     element: <PinEntry />,
   },
   {

@@ -18,7 +18,7 @@ export const SelectLanguagePage = () => {
     const loadLanguages = async () => {
       const pin = localStorage.getItem('pin');
       if (!pin) {
-        navigate('/', { replace: true });
+        navigate('/pin-entry', { replace: true });
         return;
       }
 
