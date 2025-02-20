@@ -2,7 +2,6 @@ import { LoaderProps } from '../../types/viewer';
 
 export const LoadingScreen = ({ isLoading, error }: LoaderProps) => {
   if (!isLoading && !error) return null;
-
   return (
     <div
       style={{

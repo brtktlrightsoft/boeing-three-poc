@@ -1,4 +1,5 @@
 import { useLoader } from "@react-three/fiber";
+//@ts-expect-error
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useEffect } from "react";
 import * as THREE from "three";
@@ -6,7 +7,7 @@ import * as THREE from "three";
 export const Model = ({ url, onLoad, onError }: any) => {
   const gltf = useLoader(GLTFLoader, url, undefined, (error) => {
     console.error("Error loading model:", error);
-    onError?.(error.message);
+    onError?.(error);
   });
 
   useEffect(() => {

@@ -3,25 +3,31 @@ import { PinEntry } from "./components/pages/PinEntry";
 import ViewProductPage from "./components/pages/ViewProductPage";
 import { SelectLanguagePage } from "./components/pages/SelectLanguagePage";
 import { ProtectedLayout } from "./components/layouts/ProtectedLayout";
+import { AssetDownloaderPage } from "./components/pages/AssetDownloaderPage";
+import { AttractionVideoPage } from "./components/pages/AttractionVideoPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <PinEntry onComplete={(pin) => {
-      localStorage.setItem("pin", pin);
-      // Navigate to language selection after successful PIN entry
-      console.log('PIN entered:', pin);
-    }} />,
+    element: <PinEntry />,
   },
   {
     element: <ProtectedLayout />,
     children: [
       {
+        path: "/asset-downloader",
+        element: <AssetDownloaderPage />,
+      },
+      {
         path: "/select-language",
         element: <SelectLanguagePage />,
       },
       {
-        path: "/model-viewer",
+        path: "/attraction",
+        element: <AttractionVideoPage />,
+      },
+      {
+        path: "/view-product",
         element: <ViewProductPage />,
       },
     ],

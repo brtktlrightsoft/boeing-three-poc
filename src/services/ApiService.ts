@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
-import { ActivationData } from "../types/activation-data";
-import { activationData } from '../data/activation-data';
+import { ActivationData, ActivationDataDto } from "../types/activation-data";
+import { activationDataDto } from '../data/activation-data';
 import { activationStorage } from '../config/storage';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
@@ -43,28 +43,16 @@ export class ApiService {
     }
   }
 
-  static async fetchActivationData(pin: string): Promise<ApiResponse<ActivationData>> {
+  static async fetchActivationData(pin: string): Promise<ApiResponse<ActivationDataDto>> {
     try {
-      // First check local storage
-      const localData = await this.getLocalActivationData(pin);
-      if (localData) {
-        return {
-          data: localData,
-          error: undefined,
-        };
-      }
-
       if (pin === "1234") {
-        // Save to local storage for future use
-        await this.saveLocalActivationData(pin, activationData);
-        
         return {
-          data: activationData,
+          data: activationDataDto,
           error: undefined,
         };
       } else {
         return {
-          data: {} as ActivationData,
+          data: {} as ActivationDataDto,
           error: "Invalid pin",
         };
       }

@@ -13,6 +13,7 @@
     "@heroui/button": "^2.2.13",
     "@heroui/card": "^2.2.13",
     "@heroui/input-otp": "^2.1.12",
+    "@heroui/progress": "^2.2.10",
     "@heroui/system": "^2.4.10",
     "@heroui/theme": "^2.4.9",
     "@react-three/drei": "^9.121.5",

@@ -1,7 +1,6 @@
-import { Product } from "../types/product";
-import modelUrl from '../assets/models/KC_46.glb?url';
+import {  ProductDto } from "../types/product";
 
-export const mockProduct: Product = {
+export const mockProduct: ProductDto = {
   id: "1",
   name: {
     en: "KC-46",
@@ -11,7 +10,7 @@ export const mockProduct: Product = {
     en: "Product 1 description",
     jp: "製品1の説明"
   },
-  modelUrl: modelUrl,
+  modelUrl: "http://localhost:5173/models/KC_46.glb",
   hotspots: [
     {
       id: "1",

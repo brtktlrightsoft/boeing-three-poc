@@ -1,4 +1,13 @@
+
 export interface Product {
+  id: string;
+  name: Record<string, string>;
+  description: Record<string, string>;
+  hotspots: Hotspot[];
+  model: Blob;
+}
+
+export interface ProductDto {
   id: string;
   name: Record<string, string>;
   description: Record<string, string>;

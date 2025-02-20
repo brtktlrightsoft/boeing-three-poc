@@ -40,7 +40,10 @@ export const PinEntry = ({ onComplete }: PinEntryProps) => {
 
       localStorage.setItem("pin", pin);
       onComplete?.(pin);
-      navigate("/select-language");
+      navigate("/asset-downloader", { 
+        state: response.data,
+        replace: true 
+      });
     } catch (err) {
       setError(t('pin.error.generic'));
     } finally {

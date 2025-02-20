@@ -25,3 +25,4 @@ dist-ssr
 
 # Asset directories
 src/assets/models/*
+public/models/*

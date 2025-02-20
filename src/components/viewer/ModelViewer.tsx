@@ -24,12 +24,14 @@ export const ModelViewer = ({
   const enableControls = useControlsStore((state) => state.enableControls);
 
   const handleModelLoad = () => {
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
   };
 
   const handleError = (err: string) => {
     setError(err);
-    setIsLoading(false);
+    // setIsLoading(false);
   };
 
   return (
@@ -67,7 +69,7 @@ export const ModelViewer = ({
       <HotSpotIndicator />
       {!isLoading && !enableControls && <HotSpotNavigation />}
       {!isLoading && !enableControls && <HotSpotCard />}
-      <LoadingScreen isLoading={isLoading} error={error} />
+      <LoadingScreen isLoading={isLoading}  />
     </div>
   );
 };

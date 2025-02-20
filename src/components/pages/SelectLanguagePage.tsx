@@ -42,7 +42,7 @@ export const SelectLanguagePage = () => {
 
   const handleLanguageSelect = (langCode: string) => {
     i18n.changeLanguage(langCode);
-    navigate('/model-viewer');
+    navigate('/view-product');
   };
 
   if (isLoading) {

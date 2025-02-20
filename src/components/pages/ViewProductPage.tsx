@@ -1,14 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useProductStore } from "../../store/productStore";
-import { mockProduct } from "../../data/product-data";
 import { ModelViewer } from "../viewer/ModelViewer";
 
 function ViewProductPage() {
-  const setProduct = useProductStore((state) => state.setProduct);
   const product = useProductStore((state) => state.product);
+  const [modelUrl, setModelUrl] = useState<string>('');
+
   useEffect(() => {
-    setProduct(mockProduct);
-  }, [setProduct]);
+    if (product?.model) {
+      // Create URL from Blob
+      const url = URL.createObjectURL(product.model);
+      setModelUrl(url);
+      // Cleanup URL on unmount or when product changes
+      return () => {
+        URL.revokeObjectURL(url);
+      };
+    }
+  }, [product]);
+
+  if (!modelUrl) return null;
+
   return (
     <div
       style={{
@@ -20,7 +31,7 @@ function ViewProductPage() {
       }}
     >
       <ModelViewer
-        modelUrl={product?.modelUrl}
+        modelUrl={modelUrl}
         autoRotate={true}
         backgroundColor="#1a1a1a"
       />
