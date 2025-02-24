@@ -5,6 +5,7 @@ import { SelectLanguagePage } from "./components/pages/SelectLanguagePage";
 import { ProtectedLayout } from "./components/layouts/ProtectedLayout";
 import { AssetDownloaderPage } from "./components/pages/AssetDownloaderPage";
 import { AttractionVideoPage } from "./components/pages/AttractionVideoPage";
+import { SelectProductPage } from "./components/pages/SelectProductPage";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/view-product",
         element: <ViewProductPage />,
+      },
+      {
+        path: "/select-product",
+        element: <SelectProductPage />,
       },
     ],
   },

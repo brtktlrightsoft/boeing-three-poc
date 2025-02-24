@@ -48,7 +48,7 @@ export const mockProduct: ProductDto = {
         en: "Aerial view of the aircraft",
         jp: "航空機の空撮図"
       },
-      cameraPosition: [0, 50, 0],
+      cameraPosition: [0.5, 50, 0.5],
       cameraTarget: [0, 10, 0],
     },
     {
@@ -61,7 +61,7 @@ export const mockProduct: ProductDto = {
         en: "View of the aircraft's tail section",
         jp: "航空機の尾部セクションの眺め"
       },
-      cameraPosition: [0, 10, 40],
+      cameraPosition: [0.2, 10, 40],
       cameraTarget: [0, 0, 0],
     },
   ],

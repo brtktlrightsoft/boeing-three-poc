@@ -42,7 +42,7 @@ export const ModelViewer = ({
           fov: 45,
         }}
         className="w-full h-full"
-        gl={{ 
+        gl={{
           preserveDrawingBuffer: true,
           toneMapping: THREE.ACESFilmicToneMapping,
           toneMappingExposure: 1,
@@ -58,8 +58,8 @@ export const ModelViewer = ({
           />
           <Environment />
         </Suspense>
-        <Controls autoRotate={false} />
-        <CameraPositionUpdater />
+        {enableControls && <Controls autoRotate={false} />
+        }        <CameraPositionUpdater />
       </Canvas>
       <HomeNavigation />
       <CameraPositionDisplay />
@@ -67,7 +67,7 @@ export const ModelViewer = ({
       <HotSpotIndicator />
       {!isLoading && !enableControls && <HotSpotNavigation />}
       {!isLoading && !enableControls && <HotSpotCard />}
-      <LoadingScreen isLoading={isLoading}  />
+      <LoadingScreen isLoading={isLoading} />
     </div>
   );
 };

@@ -11,35 +11,79 @@ export const CameraPositionUpdater = () => {
   const updatePosition = useCameraInformationStore((state) => state.updatePosition);
   const position = useCameraStore((state) => state.position);
   const target = useCameraStore((state) => state.target);
+
+  // Animation state
   const isAnimating = useRef(false);
+  const startPosition = useRef(new THREE.Vector3());
   const targetPosition = useRef(new THREE.Vector3());
-  useEffect(() => {
-    const updateCameraPosition = () => {
-      updatePosition(camera.position.clone());
-    };
+  const startRotation = useRef(new THREE.Quaternion());
+  const endRotation = useRef(new THREE.Quaternion());
+  const progress = useRef(0);
 
-    const interval = setInterval(updateCameraPosition, 100);
-    return () => clearInterval(interval);
-  }, [camera, updatePosition]);
-
+  // Update camera position in store
   useEffect(() => {
-    if(enableControls) return;
-    // When position changes from store, start animation
+    updatePosition(camera.position.clone());
+  }, [camera.position, updatePosition]);
+
+  // Start animation when position changes
+  useEffect(() => {
+    if (enableControls) return;
+
+    // Store start state
+    startPosition.current.copy(camera.position);
+    startRotation.current.copy(camera.quaternion);
+
+    // Set target position
     targetPosition.current.set(position[0], position[1], position[2]);
-    isAnimating.current = true;
-  }, [position,target,camera,enableControls]);
 
+    // Calculate target rotation
+    const targetVec = new THREE.Vector3(target[0], target[1], target[2]);
+    const rotationMatrix = new THREE.Matrix4();
+    rotationMatrix.lookAt(targetPosition.current, targetVec, camera.up);
+    endRotation.current.setFromRotationMatrix(rotationMatrix);
+
+    // Reset animation
+    progress.current = 0;
+    isAnimating.current = true;
+  }, [position, target, camera, enableControls]);
+
+  // Handle camera animation
   useFrame(() => {
-    if (isAnimating.current) {
-      // Check if we're close enough to the target
-      if (camera.position.distanceTo(targetPosition.current) < 1) {
-        isAnimating.current = false;
-        return;
-      }
-      // Lerp from the current camera position towards the target
-      camera.position.lerp(targetPosition.current, 0.08);
-      camera.updateProjectionMatrix();
+    if (!isAnimating.current) return;
+
+    // Update progress
+    progress.current += 0.02;
+
+    // Check if animation is complete
+    if (progress.current >= 1) {
+      camera.position.copy(targetPosition.current);
+      camera.quaternion.copy(endRotation.current);
+      isAnimating.current = false;
+      progress.current = 0;
+      return;
     }
+
+    // Calculate smooth easing
+    const t = progress.current;
+    const smoothT = t < 0.5
+      ? 4 * t * t * t  // Ease in
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;  // Ease out
+
+    // Move camera
+    camera.position.lerpVectors(
+      startPosition.current,
+      targetPosition.current,
+      smoothT
+    );
+
+    // Rotate camera
+    camera.quaternion.slerpQuaternions(
+      startRotation.current,
+      endRotation.current,
+      smoothT
+    );
+
+    camera.updateProjectionMatrix();
   });
 
   return null;
