@@ -22,15 +22,7 @@ function ViewProductPage() {
   if (!modelUrl) return null;
 
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="w-screen h-screen flex items-center justify-center">
       <BoeingLogo />
       <ModelViewer
         modelUrl={modelUrl}

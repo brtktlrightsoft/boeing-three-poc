@@ -13,6 +13,15 @@ module.exports = {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
       },
+      keyframes: {
+        loading: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(200%)' }
+        }
+      },
+      animation: {
+        'loading': 'loading 1.5s infinite'
+      }
     },
   },
   darkMode: "class",

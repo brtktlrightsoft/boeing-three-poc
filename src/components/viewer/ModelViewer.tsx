@@ -35,15 +35,13 @@ export const ModelViewer = ({
   };
 
   return (
-    <div
-      style={{ width: "100%", height: "100vh", background: backgroundColor }}
-    >
+    <div className="w-full h-screen" style={{ backgroundColor }}>
       <Canvas
         camera={{
           position: [2.92, 4.53, 31.64],
           fov: 45,
         }}
-        style={{ width: "100%", height: "100%" }}
+        className="w-full h-full"
         gl={{ 
           preserveDrawingBuffer: true,
           toneMapping: THREE.ACESFilmicToneMapping,
