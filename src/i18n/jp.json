@@ -10,5 +10,8 @@
   },
   "selectLanguage": {
     "title": "言語を選択してください"
+  },
+  "buttons": {
+    "home": "ホーム"
   }
 }

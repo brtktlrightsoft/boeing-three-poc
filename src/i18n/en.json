@@ -10,5 +10,8 @@
   },
   "selectLanguage": {
     "title": "Select Language"
+  },
+  "buttons": {
+    "home": "Home"
   }
 }

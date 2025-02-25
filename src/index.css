@@ -1,8 +1,40 @@
+@font-face {
+  font-family: "BoeingMeso";
+  font-weight: 300;
+  src: url("/fonts/BoeingMeso-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "BoeingMeso";
+  font-weight: 400;
+  src: url("/fonts/BoeingMeso-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "BoeingMeso";
+  font-weight: 500;
+  src: url("/fonts/BoeingMeso-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "BoeingMeso";
+  font-weight: 800;
+  src: url("/fonts/BoeingMeso-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "BoeingMeso";
+  font-weight: 900;
+  src: url("/fonts/BoeingMeso-Black.woff2") format("woff2");
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "BoeingMeso", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -31,7 +63,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: rgba(0, 51, 161,0.2)	;
+  background-image: url("/images/background.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -69,4 +104,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.text-40i {
+  font-size: 40px !important;
 }

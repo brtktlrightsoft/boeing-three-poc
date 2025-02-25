@@ -91,30 +91,23 @@ export const AssetDownloaderPage = () => {
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
-      <Card>
-        <CardBody>
-          <div className="flex flex-col items-center gap-8">
-            <img src={logo} alt="logo" className="w-[25rem] h-auto" />
-            <div className="text-2xl font-bold text-center text-black">
-              Downloading Assets
-            </div>
-            <div className="w-full max-w-md">
-              <div className="mb-2 flex justify-between text-sm text-gray-600">
-                <span>{currentAsset}</span>
-                <span>{`${downloadedAssets}/${totalAssets}`}</span>
-              </div>
-              <Progress
-                value={progress}
-                className="w-full"
-                size="lg"
-              />
-              <div className="mt-4 text-center text-sm text-gray-500">
-                Please wait while we download the necessary assets...
-              </div>
-            </div>
-          </div>
-        </CardBody>
-      </Card>
+      <div className="flex flex-col items-center gap-[2.75rem]">
+        <div className="text-2xl font-bold text-center text-white">
+          {`Downloading assets ${activationDataDto.name}`}
+        </div>
+        <Progress
+          value={progress}
+         
+          className="w-full"
+          classNames={{
+            indicator: "bg-white",
+          }}
+          size="sm"
+        />
+        <div className="text-center text-sm text-white">
+          {`${downloadedAssets}/${totalAssets} Completed`}
+        </div>
+      </div>
     </div>
   );
 }; 

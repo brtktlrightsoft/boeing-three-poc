@@ -6,7 +6,7 @@ export const BoeingLogo = () => {
       <img 
         src={logo} 
         alt="Boeing Logo" 
-        className="w-[450px] h-auto"
+        className="w-[371px] h-auto"
       />
     </div>
   );

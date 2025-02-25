@@ -14,10 +14,8 @@ import { HotSpotIndicator } from "../ui/HotSpotIndicator";
 import { useControlsStore } from "../../store/controlsStore";
 import * as THREE from "three";
 import { HomeNavigation } from "../ui/HomeNavigation";
-
 export const ModelViewer = ({
   modelUrl,
-  backgroundColor = "#1a1a1a",
 }: ModelViewerProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [_, setError] = useState<string>();
@@ -35,7 +33,7 @@ export const ModelViewer = ({
   };
 
   return (
-    <div className="w-full h-screen" style={{ backgroundColor }}>
+    <div className="w-full h-screen">
       <Canvas
         camera={{
           position: [2.92, 4.53, 31.64],

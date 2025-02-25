@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, CardBody } from "@heroui/card";
-import { Button } from "@heroui/button";
 import { BoeingLogo } from "../ui/BoeingLogo";
 import { activationStorage } from "../../config/storage";
 import { ActivationData } from "../../types/activation-data";
 import { useProductStore } from "../../store/productStore";
 import { useTranslation } from "react-i18next";
+import { Scrollbar } from "react-scrollbars-custom";
 
 export const SelectProductPage = () => {
   const [products, setProducts] = useState<ActivationData["products"]>([]);
@@ -39,50 +38,64 @@ export const SelectProductPage = () => {
 
   const handleProductSelect = (productIndex: number) => {
     setProduct(products[productIndex]);
-    navigate("/view-product");
+    navigate("/select-language");
   };
 
   return (
-    <div className="min-h-screen w-screen bg-neutral-900 relative">
+    <div className="min-h-screen w-screen bg-[#001D6E] relative">
       <BoeingLogo />
-      
+
       <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2">
-        <div className="flex justify-center mb-8">
-          <h1 className="text-3xl font-bold text-white">
-            Select Product
-          </h1>
-        </div>
-        
-        <div className="flex overflow-x-auto px-8 pb-4 gap-6 snap-x snap-mandatory">
-          {products.map((product, index) => (
-            <div 
-              key={product.id}
-              className="snap-center shrink-0 first:ml-[calc(50%-216px)] last:mr-[calc(50%-216px)]"
-            >
-              <Card className="w-[400px] bg-white/10 backdrop-blur-sm border border-white/20">
-                <CardBody>
-                  <div className="flex flex-col gap-4 items-center text-white">
-                    <h2 className="text-2xl font-semibold">
-                      {product.name[currentLanguage]}
-                    </h2>
-                    <p className="text-sm opacity-80 text-center">
-                      {product.description[currentLanguage]}
-                    </p>
-                    <Button
-                      variant="solid"
-                      color="primary"
-                      size="lg"
-                      onPress={() => handleProductSelect(index)}
-                      className="w-full mt-4"
-                    >
-                      View Model
-                    </Button>
+        <Scrollbar
+          style={{ width: "100%", height: "700px" }}
+
+          thumbXProps={{
+            renderer: props => {
+              const { elementRef, ...restProps } = props;
+              return (
+                <div
+                  {...restProps}
+                  ref={elementRef}
+                  style={{
+                    ...props.style,
+                    background: "#fff",
+                    borderRadius: "0px",
+                  }}
+                />
+              );
+            }
+          }}
+          trackXProps={{
+            renderer: props => {
+              const { elementRef, ...restProps } = props;
+              return <div {...restProps} ref={elementRef} 
+              style={{ ...props.style, background: "rgba(255, 255, 255, 0.3)", borderRadius: "0px",width:'calc(100% - 200px)',left:'unset',right:'10px' }} />;
+            }
+          }}
+        >
+          <div className="flex px-8 gap-6">
+            {[products, products, products, products, products].flat().map((product, index) => (
+              <div
+                onClick={() => handleProductSelect(index)}
+                key={index}
+                className="cursor-pointer shrink-0 first:ml-[200px] last:pr-[100px]"
+              >
+                <div className="flex flex-col gap-[38px] items-center">
+                  <div className="w-[385px] h-[523px] bg-blue-700/50 rounded-lg overflow-hidden">
+                    <img
+                      src="https://picsum.photos/385/523"
+                      alt={product.name[currentLanguage]}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                </CardBody>
-              </Card>
-            </div>
-          ))}
-        </div>
+                  <h2 className="text-white text-25 font-semibold uppercase">
+                    {product.name[currentLanguage]}
+                  </h2>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Scrollbar>
       </div>
     </div>
   );

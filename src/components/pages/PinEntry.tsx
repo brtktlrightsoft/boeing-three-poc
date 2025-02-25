@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { ApiService } from "../../services/ApiService";
 import logo from "../../assets/images/boeing_black.png"
-
+import backgroundSrc from "../../assets/images/background.webp"
 interface PinEntryProps {
   onComplete?: (pin: string) => void;
 }
@@ -40,9 +40,9 @@ export const PinEntry = ({ onComplete }: PinEntryProps) => {
 
       localStorage.setItem("pin", pin);
       onComplete?.(pin);
-      navigate("/asset-downloader", { 
+      navigate("/asset-downloader", {
         state: response.data,
-        replace: true 
+        replace: true
       });
     } catch (err) {
       setError(t('pin.error.generic'));
@@ -53,38 +53,34 @@ export const PinEntry = ({ onComplete }: PinEntryProps) => {
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
-      <Card>
-        <CardBody>
-          <div className="flex flex-col gap-4 items-center">
-            <img src={logo} alt="logo" className="w-[25rem] h-auto" />
-            <p className="text-black text-lg font-bold">
-              {t('pin.title')}
-            </p>
-            <div className="flex gap-2">
-              <InputOtp
-                value={pin}
-                onChange={handlePinChange}
-                length={4}
-                className=""
-              />
-            </div>
-            {error && (
-              <p className="text-red-500 text-sm">{error}</p>
-            )}
-            <Button
-              variant="solid"
-              color="primary"
-              size="sm"
-              disabled={pin.length !== 4 || isLoading}
-              isLoading={isLoading}
-              onPress={handleSubmit}
-              className="w-64 mt-2"
-            >
-              {t('pin.submit')}
-            </Button>
-          </div>
-        </CardBody>
-      </Card>
+      <div className="flex flex-col gap-4 items-center">
+        <p className="text-white text-25 font-[400]">
+          {t('pin.title')}
+        </p>
+        <InputOtp
+          containerClassName="flex justify-center items-center bg-white rounded-full bg-opacity-40 w-[434px] h-[105px]"
+          autoFocus
+          value={pin}
+          onChange={handlePinChange}
+          onComplete={handleSubmit}
+          length={4}
+          errorMessage={
+            (_) => {
+              return <p className=""></p>
+            }
+          }
+          classNames={{
+            segmentWrapper: "text-white",
+            caret: "bg-white",
+            segment: "font-bold opacity-100 bg-transparent border-none shadow-none data-[active=true]:bg-transparent data-[focus-visible=true]:outline-transparent text-40i",
+            input: "h-auto",
+            errorMessage: "text-25"
+          }}
+        />
+      </div>
+      {error && (
+        <p className="text-white text-25 text-center mt-[2.18rem]">{error}</p>
+      )}
     </div>
   );
 }; 

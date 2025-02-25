@@ -1,12 +1,15 @@
 import { Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { BoeingButton } from "./BoeingButton";
 
 export const HomeButton = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
-    <div onClick={() => navigate("/attraction")} className="relative z-60 cursor-pointer bg-transparent flex items-center justify-center w-[120px] h-[64px] border-2 border-white rounded-full py-4">
-      <Home className="w-10  h-10 text-white" />
-    </div>
+    <BoeingButton onClick={() => navigate("/attraction")}>
+      {t("buttons.home")}
+    </BoeingButton>
   );
 }; 

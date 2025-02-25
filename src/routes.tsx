@@ -9,16 +9,16 @@ import { SelectProductPage } from "./components/pages/SelectProductPage";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <AttractionVideoPage />,
-  },
-  {
     path: "/pin-entry",
     element: <PinEntry />,
   },
   {
     element: <ProtectedLayout />,
     children: [
+      {
+        path: "/",
+        element: <AttractionVideoPage />,
+      },
       {
         path: "/asset-downloader",
         element: <AssetDownloaderPage />,

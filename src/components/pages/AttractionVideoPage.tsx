@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@heroui/button';
 import { activationStorage } from '../../config/storage';
 import { ActivationData } from '../../types/activation-data';
 import { useProductStore } from '../../store/productStore';
+import { BoeingButton } from '../ui/BoeingButton';
 
 export const AttractionVideoPage = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -75,7 +75,7 @@ export const AttractionVideoPage = () => {
   };
 
   return (
-    <div className="relative w-screen h-screen bg-black">
+    <div className="relative w-screen h-screen">
       {/* Video Player */}
       <video
         ref={videoRef}
@@ -89,15 +89,9 @@ export const AttractionVideoPage = () => {
 
       {/* Overlay for button */}
       <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-16 bg-gradient-to-t from-black/50 to-transparent h-32">
-        <Button
-          variant="solid"
-          color="primary"
-          size="lg"
-          onPress={handleStart}
-          className="w-64 text-xl font-semibold"
-        >
+        <BoeingButton onClick={handleStart}>
           Start
-        </Button>
+        </BoeingButton>
       </div>
     </div>
   );

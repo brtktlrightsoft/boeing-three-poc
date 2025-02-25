@@ -5,7 +5,6 @@ import { useCameraStore } from "../../store/cameraStore";
 import { useControlsStore } from "../../store/controlsStore";
 import * as THREE from "three";
 import { useCameraInformationStore } from "../../store/cameraInformationStore";
-import { useFrame } from "@react-three/fiber";
 
 export const Controls = ({
   autoRotate = true,
