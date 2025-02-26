@@ -1,11 +1,11 @@
-import { Navigate, Outlet } from "react-router-dom";
-import HiddenButton from "../ui/hiddenButton";
+import {  Outlet, useNavigate } from "react-router-dom";
+import HiddenButton from "../ui/HiddenButton";
 
 export const ProtectedLayout = () => {
   const pin = localStorage.getItem("pin");
-
+  const navigate = useNavigate();
   if (!pin) {
-    return <Navigate to="/" replace />;
+    navigate("/pin-entry", { replace: true });
   }
 
   return <>

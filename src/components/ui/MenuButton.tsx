@@ -1,7 +1,5 @@
-import { useNavigate } from "react-router-dom";
 
 export default function MenuButton() {
-    const navigate = useNavigate();
     const navigateMenu = () => {
         // navigate('/menu');
     }

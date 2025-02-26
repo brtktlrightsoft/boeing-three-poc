@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useCameraStore } from "../../store/cameraStore";
 import { useProductStore } from "../../store/productStore";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import LeftChevron from "../icons/left-chevron";
 import RightChevron from "../icons/right-chevron";
 

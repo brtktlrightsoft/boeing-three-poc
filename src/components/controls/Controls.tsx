@@ -1,14 +1,11 @@
 import { OrbitControls as DreiOrbitControls, OrbitControlsChangeEvent } from "@react-three/drei";
-import { ControlsProps } from "../../types/viewer";
 import { useEffect, useRef } from "react";
 import { useCameraStore } from "../../store/cameraStore";
 import { useControlsStore } from "../../store/controlsStore";
 import * as THREE from "three";
 import { useCameraInformationStore } from "../../store/cameraInformationStore";
 
-export const Controls = ({
-  autoRotate = true,
-}: ControlsProps) => {
+export const Controls = () => {
   const target = useCameraStore((state) => state.target);
   const enableControls = useControlsStore((state) => state.enableControls);
   const controlsRef = useRef(null);
@@ -83,7 +80,7 @@ export const Controls = ({
       // enableDamping={false}
       // dampingFactor={50}
       // autoRotate={autoRotate}
-      
+
       // autoRotateSpeed={0.5}
       enableZoom={enableControls}
       enablePan={enableControls}

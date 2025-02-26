@@ -4,7 +4,6 @@ import { ModelViewerProps } from "../../types/viewer";
 import { Model } from "./Model";
 import { Controls } from "../controls/Controls";
 import { LoadingScreen } from "../ui/LoadingScreen";
-import { CameraPositionDisplay } from "../ui/CameraPositionDisplay";
 import { CameraPositionUpdater } from "../three/CameraPositionUpdater";
 import { HotSpotNavigation } from "../ui/HotSpotNavigation";
 import { HotSpotCard } from "../ui/HotSpotCard";
@@ -64,7 +63,7 @@ export const ModelViewer = ({
           />
           <Environment />
         </Suspense>
-        {enableControls && <Controls autoRotate={false} />
+        {enableControls && <Controls />
         }
         <CameraPositionUpdater />
       </Canvas>

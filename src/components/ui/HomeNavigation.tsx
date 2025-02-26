@@ -1,13 +1,9 @@
-import { useTranslation } from "react-i18next";
 import { useProductStore } from "../../store/productStore";
 import { HomeButton } from "./HomeButton";
-import { ProductName } from "./ProductName";
 
 export const HomeNavigation = () => {
   const product = useProductStore((state) => state.product);
-  const { i18n } = useTranslation();
 
-  const currentLanguage = i18n.language;
   if (!product) return null;
 
   return (
