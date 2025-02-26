@@ -49,16 +49,16 @@ export const HotSpotCard = () => {
         ref={cardRef}
         className={`absolute top-1/2 -translate-y-1/2 ${
           isLeftSide ? 'left-[5%]' : 'right-[5%]'
-        } bg-[#0046c0] w-[310px] h-[350px] flex flex-col shadow-lg z-[1000] ${
+        } bg-[#0046c0] w-[26.25rem] h-[30rem] flex flex-col shadow-lg z-[1000] ${
           isVisible ? 'opacity-100' : 'opacity-0'
         } overflow-hidden`}
       >
-        <div className="p-8 flex-grow bg-[#0046c0]">
-          <p className="m-0 text-base leading-relaxed text-white font-semibold">
+        <div className="p-8 h-[15rem] bg-[#0046c0]">
+          <p className="m-0 text-base leading-relaxed text-white text-18 ">
             {currentHotspot.description[currentLanguage]}
           </p>
         </div>
-        <div className="w-full h-[175px] overflow-hidden">
+        <div className="w-full h-[15rem] overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&auto=format&fit=crop"
             alt={currentHotspot.name[currentLanguage]}

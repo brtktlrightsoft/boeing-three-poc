@@ -12,6 +12,11 @@
     "title": "言語を選択してください"
   },
   "buttons": {
-    "home": "ホーム"
-  }
+    "home": "ホーム",
+    "explore": "探検"
+  },
+  "loading": {
+    "3dModel": "3Dモデルを読み込んでいます..."
+  },
+  "freeMode": "フリーモード"
 }

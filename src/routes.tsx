@@ -6,6 +6,7 @@ import { ProtectedLayout } from "./components/layouts/ProtectedLayout";
 import { AssetDownloaderPage } from "./components/pages/AssetDownloaderPage";
 import { AttractionVideoPage } from "./components/pages/AttractionVideoPage";
 import { SelectProductPage } from "./components/pages/SelectProductPage";
+import { ProductAttractionVideoPage } from "./components/pages/ProductAttractionVideoPage";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
         element: <AssetDownloaderPage />,
       },
       {
+        path: "/product-attraction",
+        element: <ProductAttractionVideoPage />,
+      },
+      {
         path: "/select-language",
         element: <SelectLanguagePage />,
       },
@@ -38,7 +43,7 @@ export const router = createBrowserRouter([
       {
         path: "/select-product",
         element: <SelectProductPage />,
-      },
+      }
     ],
   },
 ]); 

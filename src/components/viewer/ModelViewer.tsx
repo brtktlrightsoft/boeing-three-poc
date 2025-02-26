@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { ModelViewerProps } from "../../types/viewer";
 import { Model } from "./Model";
 import { Controls } from "../controls/Controls";
@@ -14,13 +14,17 @@ import { HotSpotIndicator } from "../ui/HotSpotIndicator";
 import { useControlsStore } from "../../store/controlsStore";
 import * as THREE from "three";
 import { HomeNavigation } from "../ui/HomeNavigation";
+import { useProductStore } from "../../store/productStore";
 export const ModelViewer = ({
   modelUrl,
 }: ModelViewerProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [_, setError] = useState<string>();
   const enableControls = useControlsStore((state) => state.enableControls);
-
+  const product = useProductStore((state) => state.product);
+  const setCurrentHotspotIndex = useProductStore((state) => state.setCurrentHotspotIndex);
+  const currentHotspotIndex = useProductStore((state) => state.currentHotspotIndex);
+  const isFreeMode = product?.hotspots.length === currentHotspotIndex;
   const handleModelLoad = () => {
     setTimeout(() => {
       setIsLoading(false);
@@ -31,7 +35,11 @@ export const ModelViewer = ({
     setError(err);
     // setIsLoading(false);
   };
-
+  useEffect(() => {
+    return () => {
+      setCurrentHotspotIndex(0);
+    }
+  }, []);
   return (
     <div className="w-full h-screen">
       <Canvas
@@ -57,14 +65,14 @@ export const ModelViewer = ({
           <Environment />
         </Suspense>
         {enableControls && <Controls autoRotate={false} />
-        }        <CameraPositionUpdater />
+        }
+        <CameraPositionUpdater />
       </Canvas>
       <HomeNavigation />
-      <CameraPositionDisplay />
       <ControlsToggle />
       <HotSpotIndicator />
-      {!isLoading && !enableControls && <HotSpotNavigation />}
-      {!isLoading && !enableControls && <HotSpotCard />}
+      {!isLoading && <HotSpotNavigation />}
+      {!isLoading && !enableControls && !isFreeMode && <HotSpotCard />}
       <LoadingScreen isLoading={isLoading} />
     </div>
   );

@@ -12,6 +12,11 @@
     "title": "Select Language"
   },
   "buttons": {
-    "home": "Home"
-  }
+    "home": "Home",
+    "explore": "Explore"
+  },
+  "loading": {
+    "3dModel": "Loading 3D Model..."
+  },
+  "freeMode": "Free view mode"
 }

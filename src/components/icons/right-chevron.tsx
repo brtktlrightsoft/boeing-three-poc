@@ -1,6 +1,6 @@
 export default function RightChevron() {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="120.763" height="120.763" viewBox="0 0 120.763 120.763">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" className="w-[7.5rem] h-[7.5rem]" viewBox="0 0 120.763 120.763">
             <defs>
                 <clipPath id="clip-path">
                     <path id="Path_26" data-name="Path 26" d="M0,0H120.763V-120.763H0Z" fill="none" />

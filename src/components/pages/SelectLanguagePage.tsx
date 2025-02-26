@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@heroui/button';
-import { Card, CardBody } from '@heroui/card';
 import { activationStorage } from '../../config/storage';
 import { ActivationData } from '../../types/activation-data';
-import logo from "../../assets/images/boeing_black.png";
 import { BoeingButton } from '../ui/BoeingButton';
 
 export const SelectLanguagePage = () => {
   const [languages, setLanguages] = useState<Record<string, string>>({});
   const navigate = useNavigate();
   const { i18n } = useTranslation();
-  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -43,7 +39,7 @@ export const SelectLanguagePage = () => {
 
   const handleLanguageSelect = (langCode: string) => {
     i18n.changeLanguage(langCode);
-    navigate('/view-product');
+    navigate('/product-attraction');
   };
 
   if (isLoading) {
@@ -52,8 +48,12 @@ export const SelectLanguagePage = () => {
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
+      
       <div className="flex flex-col items-center gap-8">
-        <div className="flex flex-col gap-[45px] w-full max-w-xs">
+       <div className="mb-[1.125rem] text-18 text-white text-center uppercase">
+Select Your Language  
+       </div>
+        <div className="flex flex-col gap-[45px] w-full">
           {Object.entries(languages).map(([code, name]) => (
             <BoeingButton
               key={code}

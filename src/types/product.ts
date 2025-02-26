@@ -5,6 +5,7 @@ export interface Product {
   description: Record<string, string>;
   hotspots: Hotspot[];
   model: Blob;
+  attractionVideo: Blob;
 }
 
 export interface ProductDto {
@@ -13,6 +14,7 @@ export interface ProductDto {
   description: Record<string, string>;
   hotspots: Hotspot[];
   modelUrl: string;
+  attractionVideoUrl: string;
 }
 
 export interface Hotspot {

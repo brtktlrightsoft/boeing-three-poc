@@ -46,7 +46,24 @@ export const CameraPositionUpdater = () => {
     progress.current = 0;
     isAnimating.current = true;
   }, [position, target, camera, enableControls]);
+  useEffect(() => {
+    if (!enableControls) return;
+    startPosition.current.copy(camera.position);
+    startRotation.current.copy(camera.quaternion);
 
+    // Set target position
+    targetPosition.current.set(0.2, 5, -40);
+
+    // Calculate target rotation
+    const targetVec = new THREE.Vector3(0, 0, 0);
+    const rotationMatrix = new THREE.Matrix4();
+    rotationMatrix.lookAt(targetPosition.current, targetVec, camera.up);
+    endRotation.current.setFromRotationMatrix(rotationMatrix);
+
+    // Reset animation
+    progress.current = 0;
+    isAnimating.current = true;
+  }, [enableControls]);
   // Handle camera animation
   useFrame(() => {
     if (!isAnimating.current) return;

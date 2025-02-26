@@ -25,8 +25,8 @@ export const BoeingButton = ({
         justify-center
         py-4
         px-8
-        min-w-[347px]
-        h-[64px]
+        min-w-[21.6875rem]
+        h-[4rem]
         text-white
         text-25
         font-[400]

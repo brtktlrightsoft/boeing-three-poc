@@ -68,6 +68,16 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+@media (max-width: 1440px) {
+  html {
+   font-size: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  html {
+   font-size: 8px;
+  }
+}
 
 h1 {
   font-size: 3.2em;

@@ -1,12 +1,8 @@
 import { InputOtp } from "@heroui/input-otp";
-import { Card, CardBody } from "@heroui/card";
-import { Button } from "@heroui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { ApiService } from "../../services/ApiService";
-import logo from "../../assets/images/boeing_black.png"
-import backgroundSrc from "../../assets/images/background.webp"
 interface PinEntryProps {
   onComplete?: (pin: string) => void;
 }
@@ -14,7 +10,7 @@ interface PinEntryProps {
 export const PinEntry = ({ onComplete }: PinEntryProps) => {
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [_, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -58,7 +54,7 @@ export const PinEntry = ({ onComplete }: PinEntryProps) => {
           {t('pin.title')}
         </p>
         <InputOtp
-          containerClassName="flex justify-center items-center bg-white rounded-full bg-opacity-40 w-[434px] h-[105px]"
+          containerClassName="flex justify-center items-center bg-white rounded-full bg-opacity-40 w-[27.125rem] h-[6.5625rem]"
           autoFocus
           value={pin}
           onChange={handlePinChange}
@@ -72,7 +68,7 @@ export const PinEntry = ({ onComplete }: PinEntryProps) => {
           classNames={{
             segmentWrapper: "text-white",
             caret: "bg-white",
-            segment: "font-bold opacity-100 bg-transparent border-none shadow-none data-[active=true]:bg-transparent data-[focus-visible=true]:outline-transparent text-40i",
+            segment: "font-bold opacity-100 bg-transparent border-none shadow-none data-[active=true]:bg-transparent data-[focus-visible=true]:outline-transparent text-40i w-[5rem]",
             input: "h-auto",
             errorMessage: "text-25"
           }}

@@ -14,7 +14,9 @@ module.exports = {
         mono: ["var(--font-mono)"],
       },
       fontSize: {
+        18: "1.125rem",
         25: "1.5625rem",
+        35: "2.1875rem",
         40: "2.5rem",
       },
       keyframes: {

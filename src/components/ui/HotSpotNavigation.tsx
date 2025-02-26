@@ -21,20 +21,21 @@ export const HotSpotNavigation = () => {
   const handlePrevious = () => {
     setCurrentHotspotIndex(
       currentHotspotIndex === 0
-        ? product.hotspots.length - 1
+        ? product.hotspots.length
         : currentHotspotIndex - 1
     );
   };
 
   const handleNext = () => {
     setCurrentHotspotIndex(
-      currentHotspotIndex === product.hotspots.length - 1
+      currentHotspotIndex === product.hotspots.length
         ? 0
         : currentHotspotIndex + 1
     );
   };
 
   useEffect(() => {
+    if (product?.hotspots.length === currentHotspotIndex) return;
     const newPosition = product?.hotspots[currentHotspotIndex].cameraPosition;
     const newTarget = product?.hotspots[currentHotspotIndex].cameraTarget;
     if (newPosition && newTarget) {
@@ -44,19 +45,19 @@ export const HotSpotNavigation = () => {
   }, [currentHotspotIndex, product, updateCameraPosition, updateCameraTarget]);
 
   return (
-    <div className="absolute bottom-[204px] left-1/2 -translate-x-1/2 flex justify-center items-center gap-[400px]">
+    <>
       <span
         onClick={handlePrevious}
-        className="relative rounded-full bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
+        className="absolute left-[33%]  bottom-[16.75rem]  rounded-full bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
       >
         <LeftChevron />
       </span>
       <span
         onClick={handleNext}
-        className="relative rounded-full bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
+        className="absolute  right-[33%] bottom-[16.75rem]  rounded-full bg-transparent text-white cursor-pointer text-[45px] flex items-center justify-center  hover:bg-white/10 transition-colors"
       >
         <RightChevron />
       </span>
-    </div>
+    </>
   );
 };

@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Card, CardBody } from '@heroui/card';
 import { Progress } from '@heroui/progress';
 import { ActivationData, ActivationDataDto } from '../../types/activation-data';
 import { activationStorage } from '../../config/storage';
-import logo from "../../assets/images/boeing_black.png";
 
 
 
@@ -12,7 +10,7 @@ export const AssetDownloaderPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const activationDataDto: ActivationDataDto = location.state || {};
-  const [currentAsset, setCurrentAsset] = useState<string>('');
+  const [_, setCurrentAsset] = useState<string>('');
   const [progress, setProgress] = useState<number>(0);
   const [totalAssets, setTotalAssets] = useState<number>(0);
   const [downloadedAssets, setDownloadedAssets] = useState<number>(0);
@@ -46,9 +44,11 @@ export const AssetDownloaderPage = () => {
         for (const product of activationDataDto.products) {
           setCurrentAsset(`Model: ${product.name.en}`);
           const modelBlob = await downloadFile(product.modelUrl);
+          const attractionVideoBlob = await downloadFile(product.attractionVideoUrl);
           activationData.products.push({
             ...product,
-            model: modelBlob
+            model: modelBlob,
+            attractionVideo: attractionVideoBlob
           });
           setDownloadedAssets(prev => prev + 1);
         }

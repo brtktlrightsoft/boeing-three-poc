@@ -10,6 +10,7 @@ export const mockProduct: ProductDto = {
     en: "Product 1 description",
     jp: "製品1の説明"
   },
+  attractionVideoUrl: "https://videos.pexels.com/video-files/7456210/7456210-hd_1920_1080_25fps.mp4",
   modelUrl: "http://localhost:5173/models/KC_46.glb",
   hotspots: [
     {
@@ -39,19 +40,6 @@ export const mockProduct: ProductDto = {
       cameraTarget: [20, 5, 0],
     },
     {
-      id: "3",
-      name: {
-        en: "Top View",
-        jp: "トップビュー"
-      },
-      description: {
-        en: "Aerial view of the aircraft",
-        jp: "航空機の空撮図"
-      },
-      cameraPosition: [0.5, 50, 0.5],
-      cameraTarget: [0, 10, 0],
-    },
-    {
       id: "4",
       name: {
         en: "Rear View",
@@ -64,5 +52,19 @@ export const mockProduct: ProductDto = {
       cameraPosition: [0.2, 10, 40],
       cameraTarget: [0, 0, 0],
     },
+    {
+      id: "3",
+      name: {
+        en: "Top View",
+        jp: "トップビュー"
+      },
+      description: {
+        en: "Aerial view of the aircraft",
+        jp: "航空機の空撮図"
+      },
+      cameraPosition: [0, 50, 0.5],
+      cameraTarget: [0, 10, 0],
+    },
+  
   ],
 };
