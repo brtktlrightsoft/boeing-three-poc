@@ -10,7 +10,7 @@ export const HotSpotIndicator = () => {
   if (!product) return null;
   const isFreeMode = product.hotspots.length === currentHotspotIndex;
   return (
-    <div className="absolute top-[5.4375rem] right-[4.6875rem] flex flex-col items-end gap-4 z-[1000]">
+    <div className="absolute top-[5.4375rem] right-[4.6875rem] flex flex-col items-end gap-4 z-[10]">
       <div className="flex gap-2 items-end">
         {product.hotspots.map((_, index) => (
           <div

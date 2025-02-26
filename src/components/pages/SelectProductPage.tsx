@@ -42,7 +42,7 @@ export const SelectProductPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-screen bg-[#001D6E] relative">
+    <div className="min-h-screen w-screen relative">
       <BoeingLogo />
 
       <div className="absolute bottom-[10.40625rem] left-0 right-0 ">
@@ -72,7 +72,7 @@ export const SelectProductPage = () => {
             }
           }}
         >
-          <div className="flex px-8 gap-6">
+          <div className="flex gap-6">
             {[products, products, products, products, products].flat().map((product, index) => (
               <div
                 onClick={() => handleProductSelect(index)}

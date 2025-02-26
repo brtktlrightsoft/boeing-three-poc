@@ -90,7 +90,7 @@ export const AssetDownloaderPage = () => {
   };
 
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10]">
       <div className="flex flex-col items-center gap-[2.75rem]">
         <div className="text-2xl font-bold text-center text-white">
           {`Downloading assets ${activationDataDto.name}`}

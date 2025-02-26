@@ -58,7 +58,7 @@ export const DashedLine = ({ startPoint, endPoint }: DashedLineProps) => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 pointer-events-none z-[999]"
+      className="absolute top-0 left-0 pointer-events-none z-[10]"
     />
   );
 }; 

@@ -49,7 +49,7 @@ export const HotSpotCard = () => {
         ref={cardRef}
         className={`absolute top-1/2 -translate-y-1/2 ${
           isLeftSide ? 'left-[5%]' : 'right-[5%]'
-        } bg-[#0046c0] w-[26.25rem] h-[30rem] flex flex-col shadow-lg z-[1000] ${
+        } bg-[#0046c0] w-[26.25rem] h-[30rem] flex flex-col shadow-lg z-[10] ${
           isVisible ? 'opacity-100' : 'opacity-0'
         } overflow-hidden`}
       >

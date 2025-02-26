@@ -5,7 +5,7 @@ export const CameraPositionDisplay = () => {
   const lookAt = useCameraInformationStore((state) => state.lookAt);
 
   return (
-    <div className="absolute bottom-12 left-5 flex gap-4 bg-black/70 p-2.5 rounded text-white font-mono text-sm z-[1000]">
+    <div className="absolute bottom-12 left-5 flex gap-4 bg-black/70 p-2.5 rounded text-white font-mono text-sm z-[10]">
       <div>
         <div>Camera Position:</div>
         <div>X: {position.x.toFixed(2)}</div>

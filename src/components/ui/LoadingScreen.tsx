@@ -6,7 +6,7 @@ export const LoadingScreen = ({ isLoading, error }: LoaderProps) => {
   if (!isLoading && !error) return null;
   
   return (
-    <div className="absolute inset-0 flex justify-center items-center bg-black/70 text-white text-2xl z-[1000]">
+    <div className="absolute inset-0 flex justify-center items-center bg-black/70 text-white text-2xl z-[10]">
       {error ? (
         <div className="text-red-400">Error: {error}</div>
       ) : (

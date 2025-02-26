@@ -48,7 +48,7 @@ export const PinEntry = ({ onComplete }: PinEntryProps) => {
   };
 
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10]">
       <div className="flex flex-col gap-4 items-center">
         <p className="text-white text-25 font-[400]">
           {t('pin.title')}

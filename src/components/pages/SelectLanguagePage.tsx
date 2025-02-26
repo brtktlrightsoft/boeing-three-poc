@@ -47,7 +47,7 @@ export const SelectLanguagePage = () => {
   }
 
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000]">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10]">
       
       <div className="flex flex-col items-center gap-8">
        <div className="mb-[1.125rem] text-18 text-white text-center uppercase">

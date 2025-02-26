@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 export default function MenuButton() {
     const navigate = useNavigate();
     const navigateMenu = () => {
-        navigate('/menu');
+        // navigate('/menu');
     }
     return (
         <svg className="cursor-pointer fixed top-[5.375rem] right-[4.75rem] z-10" onClick={navigateMenu} xmlns="http://www.w3.org/2000/svg" width="29" height="7" viewBox="0 0 29 7">

@@ -21,7 +21,7 @@ export const MenuPage = ({ onClose }: { onClose: () => void }) => {
     };
 
     return (
-        <div className="fixed top-0 right-0 z-10 w-screen h-screen" style={{ background: 'url("/images/background.webp")' }}>
+        <div className="fixed top-0 right-0 z-[1000] w-screen h-screen" style={{ background: 'url("/images/background.webp")' }}>
             <div className="min-h-screen w-screen relative flex flex-col items-center justify-center">
                 <BoeingLogo />
                 <div className="flex flex-col items-center gap-4">
