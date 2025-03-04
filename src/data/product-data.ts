@@ -25,6 +25,8 @@ export const mockProduct: ProductDto = {
       },
       cameraPosition: [2.92, 4.53, 31.64],
       cameraTarget: [-16.84, -7.26, 1.85],
+      mediaUrl: "https://videos.pexels.com/video-files/3657467/3657467-hd_1920_1080_30fps.mp4",
+      mediaType: "video",
     },
     {
       id: "2",
@@ -38,6 +40,8 @@ export const mockProduct: ProductDto = {
       },
       cameraPosition: [50, 10, 0],
       cameraTarget: [20, 5, 0],
+      mediaUrl: "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&auto=format&fit=crop",
+      mediaType: "image",
     },
     {
       id: "4",
@@ -51,6 +55,8 @@ export const mockProduct: ProductDto = {
       },
       cameraPosition: [0.2, 10, 40],
       cameraTarget: [0, 0, 0],
+      mediaUrl: "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&auto=format&fit=crop",
+      mediaType: "image",
     },
     {
       id: "3",
@@ -60,10 +66,12 @@ export const mockProduct: ProductDto = {
       },
       description: {
         en: "Aerial view of the aircraft",
-        jp: "航空機の空撮図"
+        jp: "航空機の空撮図"  
       },
       cameraPosition: [0, 50, 0.5],
       cameraTarget: [0, 10, 0],
+      mediaUrl: "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&auto=format&fit=crop",
+      mediaType: "image",
     },
   
   ],

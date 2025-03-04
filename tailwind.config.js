@@ -28,6 +28,9 @@ module.exports = {
       animation: {
         loading: "loading 1.5s infinite",
       },
+      transitionDuration: {
+        '1000': '1000ms',
+      }
     },
   },
   darkMode: "class",

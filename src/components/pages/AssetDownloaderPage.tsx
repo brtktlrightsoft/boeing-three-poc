@@ -45,10 +45,18 @@ export const AssetDownloaderPage = () => {
           setCurrentAsset(`Model: ${product.name.en}`);
           const modelBlob = await downloadFile(product.modelUrl);
           const attractionVideoBlob = await downloadFile(product.attractionVideoUrl);
+          const hotspots = await Promise.all( product.hotspots.map(async (hotspot) => {
+            const mediaBlob = await downloadFile(hotspot.mediaUrl);
+            return {
+              ...hotspot,
+              media: mediaBlob,
+            }
+          }));
           activationData.products.push({
             ...product,
             model: modelBlob,
-            attractionVideo: attractionVideoBlob
+            attractionVideo: attractionVideoBlob,
+            hotspots
           });
           setDownloadedAssets(prev => prev + 1);
         }

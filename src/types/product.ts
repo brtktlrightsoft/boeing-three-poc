@@ -12,9 +12,19 @@ export interface ProductDto {
   id: string;
   name: Record<string, string>;
   description: Record<string, string>;
-  hotspots: Hotspot[];
+  hotspots: HotspotDto[];
   modelUrl: string;
   attractionVideoUrl: string;
+}
+
+export interface HotspotDto {
+  id: string;
+  name: Record<string, string>;
+  description: Record<string, string>;
+  cameraPosition: [number, number, number];
+  cameraTarget: [number, number, number];
+  mediaUrl: string;
+  mediaType: 'image' | 'video';
 }
 
 export interface Hotspot {
@@ -23,4 +33,6 @@ export interface Hotspot {
   description: Record<string, string>;
   cameraPosition: [number, number, number];
   cameraTarget: [number, number, number];
+  media:Blob;
+  mediaType: 'image' | 'video';
 }
