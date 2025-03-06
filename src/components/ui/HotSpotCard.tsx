@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { DashedLine } from './DashedLine';
 import { useTranslation } from 'react-i18next';
 import HotspotMediaPopup from "./HotspotMediaPopup";
-import { createPortal } from "react-dom";
 import FadeDialog from "./FadeInDialog";
 
 export const HotSpotCard = () => {
